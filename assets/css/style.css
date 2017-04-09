@@ -1,0 +1,225 @@
+
+/*This is the general body info*/
+body {
+	color: darkred;
+	background-image: url('../images/image7.jpg');
+	}
+
+/*This is the main jumbotron*/
+section {
+	height: 800px;
+	opacity: 0.95;
+	border-top-color: teal;
+	border-bottom-color: teal;
+	font-family: 'Righteous', cursive;
+	border-style: solid;
+	border-width: 3px;
+}
+
+#answer-display {
+	display: none;
+	text-align: center;
+	color: teal; 
+	font-size: 25px; 
+	border-style: solid; 
+	border-color: teal; 
+	border-width: 3px; 
+	background-color: black;
+	font-family: 'Righteous', cursive;
+}
+
+#image-display {
+	display: none;
+	max-width: 100%;
+	min-height: 100%;
+	min-width: 200px;
+	min-height: 200px;
+	object-fit: contain;
+	margin-top: 15px;
+	margin-left: 33%;
+	background-image: none;
+}
+
+/*These are the splash page properties*/
+#background{
+	background-image: url('../images/image14.jpg');
+}
+
+#timer-banner {
+	display: none;
+	width: 100%;
+	height: 30px;
+	text-align: center;
+	border-color: teal;
+	border-style: solid;
+	border-width: 3px;
+	color: teal;
+	font-size: 20px;
+	font-family: 'Righteous', cursive;
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+
+#title {
+	background: transparent;
+	color: teal; 
+	margin-bottom: 140px;
+	text-align: center;
+	font-family: 'Righteous', cursive;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#instructions {
+	text-align: center;
+	margin-bottom: 150px; 
+	/*margin-bottom needs to change to 40px after the game starts*/
+	color: white;
+	background-color: teal;
+	font-size: 35px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-family: 'Righteous', cursive;
+}
+
+#button1 {
+	text-align: center;
+	color: teal; 
+	font-size: 25px; 
+	border-style: solid; 
+	border-color: teal; 
+	border-width: 3px; 
+	background-color: black;
+	font-family: 'Righteous', cursive;
+}
+
+#button1:hover{
+	background-color: limegreen;
+	color: black;
+	border-style: solid; 
+	border-color: hotpink; 
+	border-width: 3px; 
+}
+
+/*These are the answer buttons that are not initially displayed*/
+
+#button2 {
+	text-align: center;
+	color: teal; 
+	font-size: 25px; 
+	border-style: solid; 
+	border-color: teal; 
+	border-width: 3px; 
+	background-color: black;
+	font-family: 'Righteous', cursive;
+	display: none;
+}
+
+#button2:hover{
+	background-color: limegreen;
+	color: black;
+	border-style: solid; 
+	border-color: hotpink; 
+	border-width: 3px; 
+}
+
+#button3 {
+	text-align: center;
+	color: teal; 
+	font-size: 25px; 
+	border-style: solid; 
+	border-color: teal; 
+	border-width: 3px; 
+	background-color: black;
+	font-family: 'Righteous', cursive;
+	display: none;
+}
+
+#button3:hover{
+	background-color: limegreen;
+	color: black;
+	border-style: solid; 
+	border-color: hotpink; 
+	border-width: 3px; 
+}
+
+#button4 {
+	text-align: center;
+	color: teal; 
+	font-size: 25px; 
+	border-style: solid; 
+	border-color: teal; 
+	border-width: 3px; 
+	background-color: black;
+	font-family: 'Righteous', cursive;
+	display: none;
+}
+
+#button4:hover{
+	background-color: limegreen;
+	color: black;
+	border-style: solid; 
+	border-color: hotpink; 
+	border-width: 3px; 
+}
+
+#button5 {
+	text-align: center;
+	color: teal; 
+	font-size: 25px; 
+	border-style: solid; 
+	border-color: teal; 
+	border-width: 3px; 
+	background-color: black;
+	font-family: 'Righteous', cursive;
+	display: none;
+}
+
+#button5:hover{
+	background-color: limegreen;
+	color: black;
+	border-style: solid; 
+	border-color: hotpink; 
+	border-width: 3px; 
+}
+
+/*This is the footer properties*/
+
+footer {
+	width: 100%;
+	color: teal;
+	background-color: black;
+	padding-top: 15px;
+	height: 55px;
+	border-top-color: teal;
+	border-top-width: 5px;
+	text-align: center;
+	border-top-style: solid;
+	bottom: 0px;
+	position: relative;
+	font-family: 'Righteous', cursive;
+}
+
+
+/*This controls the navbar - it is not important*/
+.navbar-default {
+	background-image: url('');
+	border-bottom-color: teal;
+	border-bottom-width: 2px;
+	border-top-color: black;
+	border-left-color: black;
+	border-right-color: black;
+	font-family: 'Righteous', cursive;
+}
+
+.navbar-brand {
+	background-color: transparent;
+	font-family: 'Righteous', cursive;
+	font-size: 20px;
+}
+
+.navbar {
+	background-color: black;
+	border-style: solid;
+	border-color: hotpink;
+}
