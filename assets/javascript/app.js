@@ -116,7 +116,6 @@ function questionHide() {
 function answerShow() {
 	$("#answer-display").css("display", "inline");
 	$("#image-display").css("display", "inline");
-	answerTimer1();
 };
 
 // This is if the answer is right
@@ -140,6 +139,12 @@ function answerHide() {
 // This displays when all the questions have been answered
 function gameOver() {
     answerHide();
+    questionHide();
+	$("#instructions").css("display", "none");
+	$("#button2").css("display", "none");
+	$("#button3").css("display", "none");
+	$("#button4").css("display", "none");
+	$("#button5").css("display", "none");
 
 	$("#right").css("display", "inline");
 	$("#right").text("You got " + right + " right, baby");
@@ -164,8 +169,47 @@ function gameRestart() {
 
 // This is the general question page timer *Incomplete*
 function pageTimer1(){
-	var number = 5;
+	var number = 10;
     var intervalId;
+
+    questionNumber;
+
+    if (questionNumber > 9) {
+
+    function stop() {
+    	clearInterval(intervalId);
+    	stop();
+    }};
+
+    var theRightOneBaby = answerSets[questionNumber][4];
+
+    var button2 = answerSets[questionNumber][0];
+	$("#button2").text(button2);
+
+	var button3 = answerSets[questionNumber][1];
+	$("#button3").text(button3);
+
+	var button4 = answerSets[questionNumber][2];
+	$("#button4").text(button4);
+
+	var button5 = answerSets[questionNumber][3];
+	$("#button5").text(button5);
+
+// This is if the answer is right
+function answerRight() {
+	$("#answer-display").text("That's right, baby!!");
+	$("#image-display").css('background-image', 'url("http://i.imgur.com/cQJQwkE.gif")');
+};
+
+// This is if the answer is wrong
+function answerWrong() {
+	$("#answer-display").text("The right answer was " + theRightOneBaby);
+	$("#image-display").css('background-image', 'url("http://68.media.tumblr.com/0866faf72391c268bc59bafde3725a68/tumblr_ogzqlz1svD1vxw3g6o1_500.gif")');
+};	
+
+    if (right + wrong >= 9) {
+		gameOver();
+};
 
     function run() {
       intervalId = setInterval(decrement, 1000);
@@ -176,17 +220,17 @@ function pageTimer1(){
 	  $("#timer-banner").html("<h4>" + number + "</h4>");
 
 	if (number === 0){
+		wrong += 1;
     	stop();
+    	answerShow();
+    	questionHide();
+        answerWrong();
     	answerTimer1();
       };
 
     function stop() {
-      clearInterval(intervalId);
-      questionNumber += 1;
-      wrong += 1;
-    	answerShow();
-    	questionHide();
-    	answerWrong();
+    	clearInterval(intervalId);
+
     }};
     run();
 };
@@ -195,6 +239,15 @@ function pageTimer1(){
 function answerTimer1(){
 	var number = 5;
     var intervalId;
+    questionNumber += 1;
+
+    if (questionNumber > 9) {
+
+    function stop() {
+    	clearInterval(intervalId);
+    	stop();
+    }};
+
 
     function run() {
       intervalId = setInterval(decrement, 1000);
@@ -205,13 +258,14 @@ function answerTimer1(){
 
 	if (number === 0) {
     	stop();
+        answerHide();
+        questionShow();
+        answerWrong();
     	pageTimer1();
       };
 
     function stop() {
       clearInterval(intervalId);
-      answerHide();
-      questionShow();
     }};
     run();
 };
@@ -234,108 +288,63 @@ $("#button4").text(button4);
 var button5 = answerSets[questionNumber][3];
 $("#button5").text(button5);
 
-if ($("timer-banner").text() === 0) {
-	wrong += 1;
-	questionNumber += 1;
-	questionHide();
-	answerShow();
-	answerWrong();
-}
-
 
 // This should define what happens when a button is clicked
 $("#button2").on("click", function(){
-			questionHide();
-			answerShow();
-			answerTimer1();
-			questionNumber += 1;
-			console.log(questionNumber);
 
 	if ($("#button2").text() === theRightOneBaby) {
 			answerRight();
 			right += 1;
-			console.log(right);
 		}
 
 	else {
 		answerWrong();
 		wrong += 1;
-		console.log(wrong);
 		}
 	});
 
 $("#button3").on("click", function(){
-			questionHide();
-			answerShow();
-			answerTimer1();
-			questionNumber += 1;
-			console.log(questionNumber);
 
 	if ($("#button3").text() === theRightOneBaby) {
 			answerRight();
 			right += 1;
-			console.log(right);
 		}
 
 	else {
 		answerWrong();
 		wrong += 1;
-		console.log(wrong);
 		}
 	});
 
 
 $("#button4").on("click", function(){
-			questionHide();
-			answerShow();
-			answerTimer1();
-			questionNumber += 1;
-			console.log(questionNumber);
 
 	if ($("#button4").text() === theRightOneBaby) {
 			answerRight();
 			right += 1;
-			console.log(right);
 		}
 
 	else {
 		answerWrong();
 		wrong += 1;
-		console.log(wrong);
 		}
 	});
 
 
 $("#button5").on("click", function(){
-			questionHide();
-			answerShow();
-			answerTimer1();
-			questionNumber += 1;
-			console.log(questionNumber);
 
 	if ($("#button5").text() === theRightOneBaby) {
 			answerRight();
 			right += 1;
-			console.log(right);
 		}
 
 	else {
 		answerWrong();
 		wrong += 1;
-		console.log(wrong);
 		}
 	});
-
-    if (right + wrong === 10) {
-	gameOver();
-};
 });
 
 // This defines the value of the buttons
-
-
-if (right + wrong === 10) {
-	gameOver();
-};
 
 $("#restart").on("click", gameRestart());
