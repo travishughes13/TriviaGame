@@ -29,7 +29,7 @@ var wrong = 0;
 // initial question number
 var questionNumber;
 
-var questionNumber = 4;
+var questionNumber = 0;
 
 // All the questions
 var question;
@@ -62,7 +62,7 @@ var answerSetFour = ["Yuri Gagarin, baby", "Neil Armstrong, baby", "Buzz Aldrin,
 var answerSetFive = ["Love, baby", "Pressure, baby", "Gravity, baby", "Mass, baby", "Gravity, baby"];
 var answerSetSix = ["Mercury, baby", "Pluto, baby", "Jupiter, baby", "Venus, baby", "Venus, baby"];
 var answerSetSeven = ["Earth, baby", "Jupiter, baby", "Saturn, baby", "Mars, baby", "Earth, baby"];
-var answerSetEight = [""];
+var answerSetEight = ["Mars, baby", "Saturn, baby", "Uranus, baby", "Jupiter, baby", "Jupiter, baby"];
 var answerSetNine = ["Irregular, baby", "Spiral, baby", "Lenticular, baby", "Orbital, baby", "Orbital, baby"];
 var answerSetTen = ["Irregular, baby", "Spiral, baby", "Lenticular, baby", "SO, baby", "Lenticular, baby"];
 var answerSets = [answerSetOne, answerSetTwo, answerSetThree, answerSetFour, answerSetFive, answerSetSix, answerSetSeven,
@@ -71,19 +71,6 @@ var answerSets = [answerSetOne, answerSetTwo, answerSetThree, answerSetFour, ans
 // This gives the right answer
 var theRightOneBaby;
 var theRightOneBaby = answerSets[questionNumber][4];
-
-var initialPage;
-var pageHide;
-var questionHide;
-var questionShow;
-var answerShow;
-var answerHide;
-var answerRight;
-var answerWrong;
-var gameOver;
-var gameRestart;
-var pageTimer;
-var answerTimer;
 
 function initialPage() {
 	$("#timer-banner").css("display", "none");
@@ -106,6 +93,7 @@ function pageHide() {
 // This shows the questions when called
 function questionShow() {
 	$("#timer-banner").css("display", "inline");
+	$("#instructions").css("display", "block");
 	$("#instructions").text(question[questionNumber]);
 	$("#button2").css("display", "inline");
 	$("#button3").css("display", "inline");
@@ -128,7 +116,7 @@ function questionHide() {
 function answerShow() {
 	$("#answer-display").css("display", "inline");
 	$("#image-display").css("display", "inline");
-	answerTimer();
+	answerTimer1();
 };
 
 // This is if the answer is right
@@ -151,6 +139,8 @@ function answerHide() {
 
 // This displays when all the questions have been answered
 function gameOver() {
+    answerHide();
+
 	$("#right").css("display", "inline");
 	$("#right").text("You got " + right + " right, baby");
 
@@ -159,6 +149,7 @@ function gameOver() {
 
 	$("#restart").css("display", "inline");
 	$("#restart").text("Do you want to start over, baby?");
+	$("restart").on("click", gameRestart);
 };
 
 // This is called when the game is restarted
@@ -168,13 +159,12 @@ function gameRestart() {
 	$("#restart").css("display", "none");
 	right = 0;
 	wrong = 0;
+	questionNumber = 0;
 };
 
-
-
 // This is the general question page timer *Incomplete*
-function pageTimer(){
-	var number = 10;
+function pageTimer1(){
+	var number = 5;
     var intervalId;
 
     function run() {
@@ -185,22 +175,25 @@ function pageTimer(){
       number--;
 	  $("#timer-banner").html("<h4>" + number + "</h4>");
 
-	if (number === 0) {
+	if (number === 0){
     	stop();
+    	answerTimer1();
       };
 
     function stop() {
       clearInterval(intervalId);
-      questionHide();
-      answerShow();
-      answerWrong();
+      questionNumber += 1;
+      wrong += 1;
+    	answerShow();
+    	questionHide();
+    	answerWrong();
     }};
     run();
 };
 
 // This runs the answer page timer
-function answerTimer(){
-	var number = 10;
+function answerTimer1(){
+	var number = 5;
     var intervalId;
 
     function run() {
@@ -212,26 +205,23 @@ function answerTimer(){
 
 	if (number === 0) {
     	stop();
+    	pageTimer1();
       };
 
     function stop() {
       clearInterval(intervalId);
       answerHide();
-	  $("#instructions").css("display", "block");
       questionShow();
     }};
     run();
 };
 
-
 // This button starts the game
 $("#button1").on('click', function(){
 	pageHide();
 	questionShow();
-	pageTimer();
-});
+	pageTimer1();
 
-// This defines the value of the buttons
 var button2 = answerSets[questionNumber][0];
 $("#button2").text(button2);
 
@@ -244,12 +234,20 @@ $("#button4").text(button4);
 var button5 = answerSets[questionNumber][3];
 $("#button5").text(button5);
 
+if ($("timer-banner").text() === 0) {
+	wrong += 1;
+	questionNumber += 1;
+	questionHide();
+	answerShow();
+	answerWrong();
+}
+
 
 // This should define what happens when a button is clicked
 $("#button2").on("click", function(){
 			questionHide();
 			answerShow();
-			answerTimer();
+			answerTimer1();
 			questionNumber += 1;
 			console.log(questionNumber);
 
@@ -269,7 +267,7 @@ $("#button2").on("click", function(){
 $("#button3").on("click", function(){
 			questionHide();
 			answerShow();
-			answerTimer();
+			answerTimer1();
 			questionNumber += 1;
 			console.log(questionNumber);
 
@@ -290,7 +288,7 @@ $("#button3").on("click", function(){
 $("#button4").on("click", function(){
 			questionHide();
 			answerShow();
-			answerTimer();
+			answerTimer1();
 			questionNumber += 1;
 			console.log(questionNumber);
 
@@ -311,7 +309,7 @@ $("#button4").on("click", function(){
 $("#button5").on("click", function(){
 			questionHide();
 			answerShow();
-			answerTimer();
+			answerTimer1();
 			questionNumber += 1;
 			console.log(questionNumber);
 
@@ -327,6 +325,14 @@ $("#button5").on("click", function(){
 		console.log(wrong);
 		}
 	});
+
+    if (right + wrong === 10) {
+	gameOver();
+};
+});
+
+// This defines the value of the buttons
+
 
 if (right + wrong === 10) {
 	gameOver();
