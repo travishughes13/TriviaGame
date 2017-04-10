@@ -16,6 +16,7 @@ section {
 	border-width: 3px;
 }
 
+/*These next two control the display after a question is answered*/
 #answer-display {
 	display: none;
 	text-align: center;
@@ -40,20 +41,96 @@ section {
 	background-image: none;
 }
 
-/*These are the splash page properties*/
+
+/*These next four control what the end screen looks like*/
+#right {
+	display: none;
+	text-align: center;
+	color: teal; 
+	font-size: 25px; 
+	border-style: solid; 
+	border-color: teal; 
+	border-width: 3px; 
+	margin-top: -25px;
+	margin-bottom: 200px;
+	background-color: black;
+	font-family: 'Righteous', cursive;
+}
+
+#wrong {
+	display: none;
+	text-align: center;
+	color: teal; 
+	font-size: 25px; 
+	border-style: solid; 
+	border-color: teal; 
+	margin-bottom: 255px;
+	border-width: 3px; 
+	background-color: black;
+	font-family: 'Righteous', cursive;
+}
+
+#restart {
+	display: none;
+	text-align: center;
+	color: teal; 
+	font-size: 25px; 
+	border-style: solid; 
+	border-color: teal; 
+	padding-left: 15px;
+	padding-right: 5px;
+	border-width: 3px; 
+	background-color: black;
+	font-family: 'Righteous', cursive;
+}
+
+#restart:hover{
+	background-color: limegreen;
+	color: black;
+	border-style: solid; 
+	border-color: hotpink; 
+	border-width: 3px; 
+	text-align: center;
+}
+
+#continue {
+	display: none;
+	text-align: center;
+	color: teal; 
+	font-size: 25px; 
+	border-style: solid; 
+	border-color: teal; 
+	padding-left: 15px;
+	padding-right: 5px;
+	border-width: 3px; 
+	background-color: black;
+	font-family: 'Righteous', cursive;
+}
+
+#continue:hover{
+	background-color: limegreen;
+	color: black;
+	border-style: solid; 
+	border-color: hotpink; 
+	border-width: 3px; 
+	text-align: center;
+}
+
+/*These are the initial splash page properties*/
 #background{
 	background-image: url('../images/image14.jpg');
 }
 
 #timer-banner {
-	display: none;
 	width: 100%;
-	height: 30px;
+	height: 70px;
 	text-align: center;
 	border-color: teal;
 	border-style: solid;
 	border-width: 3px;
-	color: teal;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	color: yellow;
 	font-size: 20px;
 	font-family: 'Righteous', cursive;
 	margin-top: 10px;
@@ -72,8 +149,7 @@ section {
 
 #instructions {
 	text-align: center;
-	margin-bottom: 150px; 
-	/*margin-bottom needs to change to 40px after the game starts*/
+	margin-bottom: 150px;
 	color: white;
 	background-color: teal;
 	font-size: 35px;
@@ -182,6 +258,8 @@ section {
 	border-color: hotpink; 
 	border-width: 3px; 
 }
+
+/*This is for the timer that should display once the game starts*/
 
 /*This is the footer properties*/
 
