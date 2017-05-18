@@ -201,7 +201,7 @@ $("#button2").on("click", function(){
 	if ($("#button2").text() === theRightOneBaby) {
 			right += 1;
     		questionNumber += 1;
-			stop();
+			clearTimeout(run);
 			questionHide();
 			answerShow();
 			answerRight();
@@ -211,7 +211,7 @@ $("#button2").on("click", function(){
 	else {
 		wrong += 1;
     	questionNumber += 1;
-		stop();
+		clearTimeout(run);
 		questionHide();
 		answerShow();
 		answerWrong();
@@ -224,7 +224,7 @@ $("#button3").on("click", function(){
 	if ($("#button3").text() === theRightOneBaby) {
 			right += 1;
     		questionNumber += 1;
-			stop();
+			clearTimeout(run);
 			questionHide();
 			answerShow();
 			answerRight();
@@ -234,7 +234,7 @@ $("#button3").on("click", function(){
 	else {
 		wrong += 1;
     	questionNumber += 1;
-		stop();
+		clearTimeout(run);
 		questionHide();
 		answerShow();
 		answerWrong();
@@ -248,7 +248,7 @@ $("#button4").on("click", function(){
 	if ($("#button4").text() === theRightOneBaby) {
 			right += 1;
     		questionNumber += 1;
-			stop();
+			clearTimeout(run);
 			questionHide();
 			answerShow();
 			answerRight();
@@ -258,7 +258,7 @@ $("#button4").on("click", function(){
 	else {
 		wrong += 1;
     	questionNumber += 1;
-		stop();
+		clearTimeout(run);
 		questionHide();
 		answerShow();
 		answerWrong();
@@ -272,7 +272,7 @@ $("#button5").on("click", function(){
 	if ($("#button5").text() === theRightOneBaby) {
 			right += 1;
     		questionNumber += 1;
-			stop();
+			clearTimeout(run);
 			questionHide();
 			answerShow();
 			answerRight();
@@ -282,7 +282,7 @@ $("#button5").on("click", function(){
 	else {
 		wrong += 1;
     	questionNumber += 1;
-		stop();
+		clearTimeout(run);
 		questionHide();
 		answerShow();
 		answerWrong();
@@ -351,7 +351,7 @@ function answerTimer1(){
 
     // This defines what happens when the timer hits zero
 	if (number === 0) {
-    	stop();
+    	clearTimeout(run);
         answerHide();
         questionShow();
     	pageTimer1();
